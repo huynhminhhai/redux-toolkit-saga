@@ -1,9 +1,15 @@
 import axiosClient from 'api/axiosClient'
+import { ListRespone } from 'models'
 
 class CityApi {
-  getAll() {
+  getAll(): Promise<ListRespone<CityApi>> {
     const url = '/cities'
-    return axiosClient.get(url)
+    return axiosClient.get(url, {
+      params: {
+        _page: 1,
+        _limit: 999
+      }
+    })
   }
 }
 
